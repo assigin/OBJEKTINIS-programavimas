@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstdio>
 #include <random>
+#include <fstream>
 
 using namespace std;
 using std::cout;
@@ -20,3 +21,6 @@ using std::copy;
 using std::vector;
 using std::fixed;
 using std::sort;
+using std::ifstream;
+using std::ofstream;
+using std::getline;
