@@ -10,6 +10,9 @@ struct studentas
   int suma=0;
 };
 
+void galutinis (studentas &temp);
+void mediana (studentas &temp);
+
 void ivedimas (studentas &temp)
 {
   char kdr;
@@ -74,6 +77,34 @@ void ivedimas (studentas &temp)
       }
     }
 }  
+void skaitymas_is_failo (string read_vardas, vector<studentas> &mas, studentas &temp) 
+{
+  string eil, zdz;
+  int sk, x;
+  ifstream open_f (read_vardas);
+  getline(open_f, eil);
+  sk=count(eil.begin(), eil.end(),'D');
+  while (open_f)
+    {
+       if (!open_f.eof())
+       {
+         open_f>>temp.vardas>>temp.pavarde;
+         for(int i=0;i<sk;i++)
+           {
+             open_f>>x;
+             temp.pazymiai.push_back(x);
+             temp.suma=temp.suma+x;
+           }
+         open_f>>temp.egzaminas;
+         galutinis (temp);
+         mediana(temp);
+         mas.push_back(temp);
+         temp.pazymiai.clear();
+         temp.suma=0;
+       }
+      else break;
+    }
+}
 void galutinis (studentas &temp)
 {
   temp.vid=0.6*temp.egzaminas+0.4*(1.0*temp.suma/temp.pazymiai.size());
@@ -87,15 +118,37 @@ void mediana (studentas &temp)
   mediana=temp.pazymiai.size()%2==0? ((temp.med=temp.pazymiai[vid-1]+temp.pazymiai[vid])/2):temp.med=temp.pazymiai[vid];
   temp.med=0.6*temp.egzaminas+0.4*temp.med;
 }
-void spausdinimas (studentas &temp)
+void spausdinimas (vector<studentas> mas)
 {
-  cout << "Vardas"<<setw(15)<<"Pavarde"<<setw(10)<<" Galutinis (Vid.) / Galutinis (Med.)" << endl;
-  cout<<temp.vardas<<setw(15)<<temp.pavarde<<setw(15)<<setprecision(2)<<temp.vid<<setw(10)<<setprecision(2)<<temp.med;
+  ofstream rf("rezultatai.txt");
+  rf << "Vardas"<<setw(15)<<"Pavarde"<<setw(10)<<" Galutinis (Vid.) / Galutinis (Med.)" << endl;
+  for(auto &i :mas)
+    {
+      rf<<i.vardas<<setw(15)<<i.pavarde<<setw(15)<<setprecision(2)<<i.vid<<setw(10)<<setprecision(2)<<i.med<<endl;
+    }
+  cout<<"Programa baige darba. Patikrinkite rezultatai.txt faila jog pamatytumet juos."<<endl;
+}
+bool rusiavimas (studentas &pirm, studentas &kit)
+{
+  if(pirm.vardas==kit.vardas)
+  {
+    return pirm.vardas<kit.vardas;
+  }
+  else return pirm.pavarde<kit.pavarde;
 }
 int main() {
   vector<studentas> mas;
   studentas tempas;
-  char uzkl='n';
+  char uzkl='n', uzkl_2;
+  cout<<"Jei norite jog duomenis nuskaitytu is failo, spauskit y. Kitu atveju patys turesite ivesti duomenis apie studenta: "<<endl;
+  cin>>uzkl_2;
+    if (uzkl_2=='y' || uzkl_2=='Y')
+    {
+       skaitymas_is_failo("studentai.txt" ,mas, tempas);
+      
+    }
+  else 
+  {
   do{
     ivedimas(tempas);
     galutinis (tempas);
@@ -107,7 +160,9 @@ int main() {
     cin>>uzkl;
     }
   while (uzkl!='n' && uzkl!='N');
-  for (auto &i : mas) spausdinimas(i);
+  }
+  sort(mas.begin(), mas.end(), rusiavimas);
+ spausdinimas(mas);
   for (auto &i : mas) i.pazymiai.clear();
   mas.clear();
 }
