@@ -1,27 +1,24 @@
-#ifndef V05LIST_H_INCLUDED
-#define V05LIST_H_INCLUDED
+#pragma once
+#include "lib.h"
 
-#include "Mylib.h"
-
-struct studentas //struct
+struct studentas
 {
-    string vardas, pavarde;
-    list<int> paz;
-    double egz;
-    double gal = 0;
-    double med;
-    double lygin;
+	string vardas, pavarde;
+	list<int> pazymiai;
+	int egzaminas;
+	double vid;
+	double med;
+	int suma = 0;
 };
 
-bool isnumber(string str); //check if string is number;
-bool equality(studentas &x, studentas &y); //bool for sorting by name;
-bool grading(studentas &x, studentas &y); //bool for sorting by grades;
-void mediana(studentas &temp, int n); //mediana search function;
-void pild(studentas& temp); //function to insert data by hand;
-void eil_po_eil(string read_vardas, studentas& temp, list<studentas> &mas, double &laikas); //read data from file;
-void generate(string pavadinimas, int size); //function for student file generating;
-void skirstymas(list<studentas> &mas, char ats, list<studentas> &mldc, list<studentas> &blgj, double &laikas); //sorting students to good and bad ones;
-void spausd(list<studentas> &mas, char ats, string file_name, double &laikas); //printing data to file;
-
-
-#endif
+void ivedimas(studentas& temp);
+void galutinis(studentas& temp);
+void mediana(studentas& temp);
+void skaitymas_is_failo(string read_vardas, list<studentas>& mas, studentas& temp);
+void spausdinimas(list<studentas> mas);
+bool rusiavimas(studentas& pirm, studentas& kit);
+void visiskas_generavimas(studentas& temp, int& x, int& n);
+bool rusiavimas_2(studentas& pirm, studentas& kit);
+bool rusiavimas_3(studentas& pirm, studentas& kit);
+void spaus(list<studentas>& mas, char b, string file_name);
+void skirstymas(list<studentas>& zino, list<studentas>& nezino, char& b, list<studentas>& mas);
