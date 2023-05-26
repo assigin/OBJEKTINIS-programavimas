@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include<iomanip>
 #include<string>
@@ -7,7 +8,7 @@
 #include <cstdio>
 #include <random>
 
-using namespace std;
+
 using std::cout;
 using std::cin;
 using std::endl;
