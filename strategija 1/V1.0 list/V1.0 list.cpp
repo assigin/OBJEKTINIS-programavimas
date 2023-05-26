@@ -1,70 +1,91 @@
-#include "v05LIST.h"
+#include "funcheader.h"
 
-int main()
-{   
+int main() {
+    auto start = std::chrono::high_resolution_clock::now();
     list<studentas> mas;
     studentas tempas;
-    list<studentas> mldc;
-    list<studentas> blgj;
-    
-    double laikas = 0;
-    char rink;
-    cout << "Jei norite:" << endl;
-    do
+    list<studentas> zino;
+    list<studentas> nezino;
+    char uzkl = 'n', uzkl_2, uzkl_3, b;
+    cout << "Jei norite, jog programa pati sugeneruotu visus duomenis, spauskit y. Kitu atveju galesite pasirinkti ar norite, jog duomenis is failo nuskaitytu, ar patys juos ivesti: " << endl;
+    cin >> uzkl_3;
+    if (uzkl_3 == 'y' || uzkl_3 == 'Y')//V0.4
     {
-        cout << "nuskaityti duomenis iš failo, įveskite (f). " << endl;
-        cout << "įvesti duomenis ranka, įveskite (r). " << endl;
-        cout << "sugeneruoti duomenų failą (s). " << endl;
-        cin >> rink; 
-    } while (rink != 'r' && rink != 'R' && rink != 'f' && rink != 'F' && rink != 's' && rink != 'S');
-    
-    
-    if(rink == 'r' || rink == 'R')
-    {
-        char uzkl = 'n';
-        do{
-            pild(tempas);
-            mas.push_back(tempas);
-            tempas.paz.clear();
-            cout << "------------------------------------------------------------------------------" <<endl;
-            cout << "Baigti darba spausk n, testi - bet koks klavisas: " << endl;
-            cout << "------------------------------------------------------------------------------" <<endl;
-            cin >> uzkl;
-        }while (uzkl!='n' && uzkl!='N');  
-    } else if(rink == 'f' || rink == 'F')
+        int x, n = 1000;
+        int a = 1;
+        cout << "Iveskite kiek norite jog sugeneruotu pazymiu" << endl;
+        cin >> x;
+        while (a == 1)//kiek pazymiu generuot
+        {
+            if (x <= 0 || isdigit(x))
             {
-                eil_po_eil("sarasas10000000.txt", tempas, mas, laikas);
-            } else if (rink == 's' || rink == 'S')
-                {
-                    int size;
-                    cout << "Įveskite norimo sąrašo dydį: "; cin >> size;
-                    generate("sarasas10000000.txt", size);
-                    cout << "Duomenų failas sugeneruotas! Pasitikrinkite savo folderį!";
-                    exit(0);
-                }
-
-    
-    char ats;  
-    do
+                cout << "Iveskite pazymiu kieki is naujo: " << endl;
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin >> x;
+            }
+            else break;
+        }
+        cout << "Jei norite, jog paskirstytu pagal medianos galutinio ivertinima, spauskit y. Kitu atveju programa paskirstys pagal pazymiu vidurkio galutini ivertinima: " << endl;
+        cin >> b;
+        visiskas_generavimas(tempas, x, n);//generavimas i faila duomenu
+        skaitymas_is_failo("gen_stud.txt", mas, tempas);
+        if (b == 'y' || b == 'Y')//medianos rusiavimas
+        {
+            auto start = std::chrono::high_resolution_clock::now();
+            // sort(mas.begin(), mas.end(), rusiavimas_2);
+            mas.sort(rusiavimas_2);
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> diff = end - start;
+            cout << "Failo rusiavimas pagal mediana uztruko: " << diff.count() << " s." << endl;
+        }
+        else//vidurkio rusiavimas
+        {
+            auto start = std::chrono::high_resolution_clock::now();
+            //sort(mas.begin(), mas.end(), rusiavimas_3);
+            mas.sort(rusiavimas_3);
+            auto end = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double> diff = end - start;
+            cout << "Failo rusiavimas pagal vidurki uztruko: " << diff.count() << " s." << endl;
+        }
+        skirstymas(zino, nezino, b, mas);
+        spaus(zino, b, "Islaike_studentai.txt");
+        spaus(nezino, b, "neislaike_studentai.txt");
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> diff = end - start;
+        cout << "Visa programa uztruko: " << diff.count() << " s." << endl;
+        cout << "Programa baige darba. Patikrinkite rezultatus failuose: Islaike_studentai ir neislaike_studentai" << endl;
+    }
+    else//V0.2
     {
-        cout << "Galutinį pažymį(Vidurkis), rašykite (G)" << endl;
-        cout << "Galutinį pažymį(Mediana), rašykite (M)" << endl;
-        cin >> ats;
-        cout << endl;
-    } while (ats != 'g' && ats != 'G' && ats != 'm' && ats != 'M');
-    //sort(mas.begin(), mas.end(), equality); //data sorting by name/lastname;  If "equality" function returns "False", it let's us know, that the "First" argument shouldn't be placed before "Second" argument, arguments would be swaped;
-    mas.sort(equality);
-    skirstymas(mas, ats, mldc, blgj, laikas);
-    spausd(mldc, ats, "stiprus.txt", laikas); //printing data to file;
-    spausd(blgj, ats, "apsileide.txt", laikas); //printing data to file;
-    cout << "Programos trukmės laikas: " << laikas << "s. \n";
+        cout << "Jei norite, jog duomenis nuskaitytu is failo, spauskit y. Kitu atveju patys turesite ivesti duomenis apie studenta: " << endl;
+        cin >> uzkl_2;
+        if (uzkl_2 == 'y' || uzkl_2 == 'Y')
+        {
+            skaitymas_is_failo("studentai.txt", mas, tempas);
+        }
+        else//V0.1
+        {
+            do {
+                ivedimas(tempas);
+                galutinis(tempas);
+                mediana(tempas);
+                mas.push_back(tempas);
+                tempas.pazymiai.clear();
+                tempas.suma = 0;
+                cout << "Baigti darba paspauskite n, testi - bet koks klavisas: ";
+                cin >> uzkl;
+            } while (uzkl != 'n' && uzkl != 'N');
+        }
+        //sort(mas.begin(), mas.end(), rusiavimas);
+        mas.sort(rusiavimas);
+        spausdinimas(mas);
 
-    for(auto &i : mas) i.paz.clear();
+    }
+    for (auto& i : mas) i.pazymiai.clear();
     mas.clear();
-    for(auto &i : mldc) i.paz.clear();
-    mldc.clear();
-    for(auto &i : blgj) i.paz.clear();
-    blgj.clear();
-
-    cout << "Pasitikrinkite savo rezultatų failą!" << endl;
+    for (auto& i : zino) i.pazymiai.clear();
+    zino.clear();
+    for (auto& i : nezino) i.pazymiai.clear();
+    nezino.clear();
 }
