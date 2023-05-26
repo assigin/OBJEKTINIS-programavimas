@@ -1,40 +1,34 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <algorithm>
-#include <cctype>
+#pragma once
+#include<iostream>
+#include<iomanip>
+#include<string>
 #include <vector>
 #include <limits>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <fstream>
-#include <sstream> 
-#include <chrono>
+#include <algorithm>
+#include <cstdio>
 #include <random>
-#include <cstdlib>
+#include <fstream>
+#include <chrono>
 #include <list>
-#include <deque>
+#include<deque>
 #include <iterator>
 
-
+using namespace std;
 using std::cout;
 using std::cin;
 using std::endl;
 using std::left;
 using std::right;
-using std::setw;
 using std::setprecision;
-using std::fixed;
+using std::setw;
 using std::string;
 using std::copy;
-using std::swap;
 using std::vector;
-using std::min;
-using std::stoi;
+using std::fixed;
+using std::sort;
 using std::ifstream;
 using std::ofstream;
 using std::getline;
-using std::sort;
+using std::to_string;
 using std::list;
 using std::deque;
