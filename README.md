@@ -22,16 +22,16 @@
 
 | Failo generavimo lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
-|laikas(s)|0,043|0,34|3,5|34,2|
+|laikas(s)|0,043|0,34|3,5|34,2|334,9|
 |dydis| 1000 |10000|100000|1000000|10000000|
 
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
 |dydis| 1000 |10000|100000|1000000|10000000|
-|Rūšiavimas(s)|0,0053|0,065|0,65|6,9|
-|Skirstymas(s)|0,0047|0,058|0,52|5,5|
-|Išlaikiusiu vedimas į failą (s)|0,01|0,09|0,9|9|
-|Neišlaikiusiu vedimas į failą (s)|0,0068|0,06|0,66|6,2|
-|Visas programos veikimo laikas su failo generavimu (s)|0,0698|0.613|6,23|61.8|
+|Nuskaitymas|0,042|0,47|0,64|29|228|
+|Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
+|Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
+|Išlaikiusiu vedimas į failą (s)|0,1|0,09|0,95|9,3|90|
+|Neišlaikiusiu vedimas į failą (s)|0,063|0,06|0,66|6,2|62|
+|Visas programos veikimo laikas be failo generavimo (s)|0,216|0.729|3,46|61.8|515|
 
-Greitis buvo matuojamas paleidžiant programą penkis kartus, generuojant penkis pažymius kiekvienam studentui
