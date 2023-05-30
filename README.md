@@ -45,7 +45,7 @@ Kompiuterio parametrai
 - SSD 256GB
 - HDD 1TB
 
--Vector
+Vector
 
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
@@ -53,9 +53,9 @@ Kompiuterio parametrai
 |Nuskaitymas|0,042|0,47|0,64|29|228|
 |Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
 |Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
-|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+|Visų funkcijų veikimo laikas (s)|0,0533|0,579|1,85|41,4|363|
 
--Deque
+Deque
 
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
@@ -63,16 +63,16 @@ Kompiuterio parametrai
 |Nuskaitymas (s)|0,025|0,6|8,3|35|250|
 |Rūšiavimas(s)|0,0075|0,06|0,83|7,4|80|
 |Skirstymas(s)|0,003|0,055|0,67|4,2|60|
-|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+|Visų funkcijų veikimo laikas (s)|0,0355|1,21|9,8|46,6|390|
 
--List
+List
 
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
 |dydis| 1000 |10000|100000|1000000|10000000|
-|Nuskaitymas|0,042|0,47|0,64|29|228|
-|Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
-|Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
-|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+|Nuskaitymas|0,023|0,54|6,9|30|235|
+|Rūšiavimas(s)|0,0002|0,0027|0,049|0,77|11|
+|Skirstymas(s)|0,0032|0,06|0,74|4|90|
+|Visų funkcijų veikimo laikas (s)|0,0264|0.6027|7,689|34,77|336|
 
 ## V1.0
