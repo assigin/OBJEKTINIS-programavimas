@@ -28,7 +28,7 @@
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
 |dydis| 1000 |10000|100000|1000000|10000000|
-|Nuskaitymas|0,042|0,47|0,64|29|228|
+|Nuskaitymas (s)|0,042|0,47|0,64|29|228|
 |Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
 |Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
 |Išlaikiusiu vedimas į failą (s)|0,1|0,09|0,95|9,3|90|
@@ -37,27 +37,15 @@
 
 ## V0.5
 
+- Matuojamas konteinerių greitis (vector, deque, list) prikklausantis nuo failų dydžių.
 
+Kompiuterio parametrai
+- CPU i3-9100F
+- RAM 16GB
+- SSD 256GB
+- HDD 1TB
 
-Vector
-
-|Funkcijų atlikimo greičio lentelė||||||
-|-------------------------|-----|-----|-----|-----|-----|
-|dydis| 1000 |10000|100000|1000000|10000000|
-|Nuskaitymas|0,042|0,47|0,64|29|228|
-|Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
-|Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
-
-Deque
-
-|Funkcijų atlikimo greičio lentelė||||||
-|-------------------------|-----|-----|-----|-----|-----|
-|dydis| 1000 |10000|100000|1000000|10000000|
-|Nuskaitymas|0,042|0,6|8,3|35|250|
-|Rūšiavimas(s)|0,0067|0,06|0,83|7,4|80|
-|Skirstymas(s)|0,0046|0,055|0,67|4,2|60|
-
-List
+-Vector
 
 |Funkcijų atlikimo greičio lentelė||||||
 |-------------------------|-----|-----|-----|-----|-----|
@@ -65,3 +53,26 @@ List
 |Nuskaitymas|0,042|0,47|0,64|29|228|
 |Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
 |Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
+|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+
+-Deque
+
+|Funkcijų atlikimo greičio lentelė||||||
+|-------------------------|-----|-----|-----|-----|-----|
+|dydis| 1000 |10000|100000|1000000|10000000|
+|Nuskaitymas (s)|0,025|0,6|8,3|35|250|
+|Rūšiavimas(s)|0,0075|0,06|0,83|7,4|80|
+|Skirstymas(s)|0,003|0,055|0,67|4,2|60|
+|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+
+-List
+
+|Funkcijų atlikimo greičio lentelė||||||
+|-------------------------|-----|-----|-----|-----|-----|
+|dydis| 1000 |10000|100000|1000000|10000000|
+|Nuskaitymas|0,042|0,47|0,64|29|228|
+|Rūšiavimas(s)|0,0067|0,05|0,69|6,9|65|
+|Skirstymas(s)|0,0046|0,059|0,52|5,5|70|
+|Visų funkcijų veikimo laikas (s)|0,216|0.729|3,46|61.8|515|
+
+## V1.0
