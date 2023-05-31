@@ -76,3 +76,22 @@ List
 |Visų funkcijų veikimo laikas (s)|0,0264|0.6027|7,689|34,77|336|
 
 ## V1.0
+
+- Padarytos dvi strategijos vector, deque, list konteineriams.
+- 1 strategija - studentai skirstomi į du naujus konteinerius
+ Greitis abiejomis strategijomis buvo matuojamas su 100000 studentų įrašų.
+ 
+|Skirstymo greičio lentelė||
+|-------------------------|-----|
+|vector| 0,52|
+|deque| 0,51| 
+|list| 0,74|
+
+- 2 strategija - studentai skirstomi į vieną naują konteinerį ir atnaujinamas pradinis studentų konteineris
+
+|Skirstymo greičio lentelė||
+|-------------------------|-----|
+|vector| 0,26|
+|deque| 0,67|
+|list| 0,34|
+
